@@ -4,6 +4,60 @@ import { createGlobalStyle, css } from "styled-components";
 
 // 위에서 받은 `normalize`로 기본 css가 초기화 합니다.
 
+export const inputText = css`
+  input {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #cccccc;
+    font-size: 16px;
+    line-height: 23px;
+    color: #1c1c1c;
+    display: flex;
+    padding: 8px 10px;
+    &:placeholder {
+      color: #cccccc;
+    }
+    &:focus,
+    &:active {
+      outline: 0;
+      border: 1px solid #0d643a;
+    }
+  }
+`;
+export const hoverBgColor = {
+  primary: css`
+    background: #0d643a;
+    &:hover {
+      background: #06522d;
+    }
+  `,
+  white: css`
+    background: #fff;
+    &:hover {
+      background: #f6faf8;
+    }
+  `,
+};
+export const buttons = {
+  buttonM: {
+    default: css`
+      button {
+        width: 140px;
+        height: 40px;
+        ${hoverBgColor.white}
+        border: 1px solid #0d643a;
+      }
+    `,
+    primary: css`
+      button {
+        width: 140px;
+        height: 40px;
+        ${hoverBgColor.primary}
+        color: #fff;
+      }
+    `,
+  },
+};
 export const fontSize = {
   //Mo / Headers / TXT_MR26
   mobile: {
@@ -101,9 +155,13 @@ const GlobalStyle = createGlobalStyle`
 
   * {
     font-family: 'Spoqa Han Sans';
-    box-sizing: border-box;
+    box-sizing: border-box !important;
     margin:0;
     padding:0;
+    input{
+    outline:0 !important;
+
+    }
   }
   li{list-style:none;}
   a{text-decoration:none;

@@ -1,29 +1,54 @@
-import React from "react";
+import React, { ChangeEventHandler } from "react";
+
 interface Props {
   type: "text" | "password" | "email" | "number" | "checkbox" | "radio";
   placeholder?: string;
   id: string;
   name: string;
+  onChange?: Function;
+  labelShow?: boolean;
 }
-const Input = ({ type, placeholder, id, name }: Props) => {
+const Input = ({ type, placeholder, id, name, onChange, labelShow }: Props) => {
   const radioAndcheckbox = ["radio", "checkbox"];
-  return (
-    <div>
-      {radioAndcheckbox.includes(type) ? (
-        /* 라디오 버튼 및 체크박스 */
-        <div className={`inputBlock ${type}`}>
-          <input type={type} id={id} name={name}></input>
-          <label htmlFor={id}>{name ? name : id}</label>
-        </div>
-      ) : (
-        /* 텍스트, 이메일, 넘버, 패스워드 */
-        <div className={`inputBlock`}>
-          <input type={type} id={id} name={name}></input>
-          <label htmlFor={id}>{name ? name : id}</label>
-        </div>
-      )}
-    </div>
-  );
+  let res;
+  const InputRadioOrCheckbox = () => {
+    return (
+      <div className={`input-block`}>
+        <input
+          placeholder={placeholder}
+          type={type}
+          id={id}
+          name={name}
+          onChange={onChange as ChangeEventHandler<HTMLInputElement>}
+        ></input>
+        <label htmlFor={id} className={labelShow ? "" : "blind"}>
+          {name ? name : id}
+        </label>
+      </div>
+    );
+  };
+  const inputDefault = () => {
+    return (
+      <div className={`input-block`}>
+        <input
+          placeholder={placeholder}
+          type={type}
+          id={id}
+          name={name}
+          onChange={onChange as ChangeEventHandler<HTMLInputElement>}
+        ></input>
+        <label htmlFor={id} className={labelShow ? "" : "blind"}>
+          {name ? name : id}
+        </label>
+      </div>
+    );
+  };
+  if (onChange && radioAndcheckbox.includes(type)) {
+    res = InputRadioOrCheckbox;
+  } else {
+    res = inputDefault;
+  }
+  return res();
 };
 
 export default Input;
