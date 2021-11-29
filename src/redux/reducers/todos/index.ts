@@ -15,15 +15,15 @@ export const EMPTY_TODOS = "EMPTY_TODOS";
 
 export const addTodo = (content: string): AddTodo => ({
   type: ADD_TODO,
-  content,
+  payload: { content: content },
 });
-export const removeTodo = (id: number): RemoveTodo => ({
+export const removeTodo = (id: string): RemoveTodo => ({
   type: REMOVE_TODO,
-  id,
+  payload: { id },
 });
-export const toggleTodo = (id: number): ToggleTodo => ({
+export const toggleTodo = (id: string): ToggleTodo => ({
   type: TOGGLE_TODO,
-  id,
+  payload: { id },
 });
 export const emptyTodos = (): EmptyTodos => ({ type: EMPTY_TODOS });
 
@@ -33,30 +33,40 @@ const initialState: TodosState = {
   ],
 };
 
+const __idString = ["m", "i", "n", "h", "y", "u", "k"];
+const idCreator = () => {
+  return `${__idString[Math.floor(Math.random() * __idString.length)]}${
+    Date.now() + Math.random() * 10
+  }`;
+};
 const todoReducer = (state = initialState, action: TodosDispatchType) => {
-  const todo: Todo = { id: 1, content: "", checked: false, done: false };
+  const todo: Todo = {
+    id: idCreator(),
+    content: "",
+    checked: false,
+    done: false,
+  };
   switch (action.type) {
     case ADD_TODO:
       return {
         ...state,
-        todos: [...state.todos, { ...todo, content: action.content }],
+        todos: state.todos.concat({ ...todo, content: action.payload.content }),
       };
     case REMOVE_TODO:
       return {
         ...state,
-        todos: state.todos.filter((item) => item.id !== action.id),
+        todos: state.todos.filter((item) => item.id !== action.payload.id),
       };
     case TOGGLE_TODO:
       return {
         ...state,
         todos: state.todos.map((item) =>
-          item.id === action.id ? { ...item, done: !item.done } : item
+          item.id === action.payload.id ? { ...item, done: !item.done } : item
         ),
       };
     case EMPTY_TODOS:
       return {
         ...state,
-        todos: [],
       };
     default:
       return { ...state };
