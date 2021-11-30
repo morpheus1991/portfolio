@@ -1,8 +1,6 @@
 import { createStore } from "redux";
 import { rootReducer } from "../reducers/inedex";
-
-const store = createStore(rootReducer);
-
-export default store;
+import { persistStore } from "redux-persist";
+import persistReducer from "redux-persist/lib/persistReducer";
 
 export type RootReducerType = ReturnType<typeof rootReducer>;

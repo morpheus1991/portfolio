@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import store from "../../../../redux/store/store";
+import { store } from "../../../../redux/reducers/inedex";
 import { combineReducersState, TodosState } from "../../../../structure/todos";
 import TodoItem from "./TodoItem";
 
@@ -13,9 +13,7 @@ const Block = styled.div`
 `;
 const TodoBody = () => {
   const { getState } = store;
-  console.log(getState());
   const todos = useSelector((state: combineReducersState) => state.todos);
-  console.log(todos);
   return (
     <Block className="todos-body">
       <ul>

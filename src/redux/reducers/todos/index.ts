@@ -51,7 +51,7 @@ const idCreator = () => {
 };
 
 /* 리듀서 */
-const todoReducer = (state = initialState, action: TodosDispatchType) => {
+const todos = (state = initialState, action: TodosDispatchType) => {
   const todo: Todo = {
     id: idCreator(),
     content: "",
@@ -97,8 +97,8 @@ const todoReducer = (state = initialState, action: TodosDispatchType) => {
         todos: state.todos.map((todo) => ({ ...todo, checked: true })),
       };
     default:
-      return { ...state };
+      return state;
   }
 };
 
-export default todoReducer;
+export default todos;

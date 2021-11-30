@@ -1,8 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
+import { store } from "../../../../redux/reducers/inedex";
 import { removeTodo, toggleCheckTodo } from "../../../../redux/reducers/todos";
-import store from "../../../../redux/store/store";
 import { combineReducersState } from "../../../../structure/todos";
 import { GRAY_SCALE } from "../../../../style/GlobalStyle";
 import Input, { InputStyle } from "../../../common/Input";
@@ -54,13 +54,11 @@ interface Props {
 }
 const TodoItem = ({ id, content, checked }: Props) => {
   const { dispatch, getState } = store;
-  const deleteTodo = () => {
+  const onClick = () => {
     dispatch(removeTodo(id));
   };
-  const toggleChecked = (id: string) => {
-    console.log(getState());
+  const onChange = (id: string) => {
     dispatch(toggleCheckTodo(id));
-    console.log(getState());
   };
   return (
     <Block>
@@ -68,12 +66,12 @@ const TodoItem = ({ id, content, checked }: Props) => {
         type="checkbox"
         id={id}
         name="checkbox"
-        onChange={toggleChecked}
+        onChange={onChange}
         labelShow={false}
         checked={checked}
       />
       <div className="content-button-area">
-        <p>{content}</p> <button onClick={deleteTodo}>삭제</button>
+        <p>{content}</p> <button onClick={onClick}>삭제</button>
       </div>
     </Block>
   );

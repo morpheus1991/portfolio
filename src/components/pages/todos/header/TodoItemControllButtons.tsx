@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
+import { store } from "../../../../redux/reducers/inedex";
 import {
   allCheck,
   emptyTodos,
   removeCheckedTodos,
 } from "../../../../redux/reducers/todos";
-import store from "../../../../redux/store/store";
 import Button from "../../../common/Button";
 
 const Block = styled.div`

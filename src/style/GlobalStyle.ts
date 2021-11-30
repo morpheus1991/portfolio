@@ -58,6 +58,7 @@ export const hoverBgColor = {
 export const buttons = {
   buttonM: {
     default: css`
+      display: flex;
       button {
         width: 140px;
         height: 40px;
@@ -66,16 +67,22 @@ export const buttons = {
       }
     `,
     primary: css`
+      display: flex;
       width: 140px;
       max-width: 30%;
       height: 40px;
       ${hoverBgColor.primary}
       display: flex;
-      align-items: center;
+      align-items: stretch;
       justify-content: center;
       color: #fff;
+
       button {
+        flex: 1;
         color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
     `,
   },

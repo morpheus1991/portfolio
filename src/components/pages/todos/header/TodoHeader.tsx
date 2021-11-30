@@ -1,14 +1,13 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
-import { couldStartTrivia } from "typescript";
+import { store } from "../../../../redux/reducers/inedex";
 import { addTodo } from "../../../../redux/reducers/todos";
-import store from "../../../../redux/store/store";
 import { buttons, inputText } from "../../../../style/GlobalStyle";
 import Button from "../../../common/Button";
 import Input from "../../../common/Input";
 import TodoItemControllButtons from "./TodoItemControllButtons";
 const Block = styled.form`
-  margin-top: 100px;
+  margin-top: 40px;
   display: flex;
   flex-wrap: wrap;
   .input-button-area {
@@ -36,11 +35,16 @@ const TodoHeader = () => {
   const { dispatch, getState } = store;
   const inputRef = useRef<HTMLInputElement>(null);
   const [inputText, setInputText] = useState("");
-  const todoAdd = (e: React.MouseEvent) => {
+  const onClick = (e: React.MouseEvent) => {
     e.preventDefault(); //이벤트 기본 동작 켄슬
-    dispatch(addTodo(inputText)); //디스패치
-    setInputText(""); //스테이트 초기화
-    inputRef.current!.value = ""; //인풋 element value 초기화 (입력창 비우기)
+    if (inputText.length > 0) {
+      dispatch(addTodo(inputText)); //디스패치
+      setInputText(""); //스테이트 초기화
+      if (inputRef.current && inputRef.current.value.length > 0) {
+        inputRef.current!.value = ""; //인풋 element value 초기화 (입력창 비우기)
+      }
+      console.log(getState());
+    }
   };
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.value) {
@@ -60,7 +64,7 @@ const TodoHeader = () => {
           value={inputText}
           ref={inputRef}
         ></Input>
-        <Button type="submit" onClick={todoAdd}>
+        <Button type="submit" onClick={onClick}>
           추가
         </Button>
       </div>
