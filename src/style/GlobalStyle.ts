@@ -4,31 +4,48 @@ import { createGlobalStyle, css } from "styled-components";
 
 // 위에서 받은 `normalize`로 기본 css가 초기화 합니다.
 
+export const PRIMARY = {
+  grade1: "#00AD50",
+  grade2: "#0D643A",
+  grade3: "#06522D",
+};
+export const GRAY_SCALE = {
+  grade1: "#FFFFFF",
+  grade2: "#F5F5F5",
+  grade3: "#E5E5E5",
+  grade4: "#CCCCCC",
+  grade5: "#999999",
+  grade6: "#666666",
+  grade7: "#474747",
+  grade8: "#1C1C1C",
+  grade9: "#000000",
+};
+
 export const inputText = css`
   input {
     width: 100%;
     height: 40px;
-    border: 1px solid #cccccc;
+    border: 1px solid ${GRAY_SCALE.grade4};
     font-size: 16px;
     line-height: 23px;
-    color: #1c1c1c;
+    color: ${GRAY_SCALE.grade8};
     display: flex;
     padding: 8px 10px;
     &:placeholder {
-      color: #cccccc;
+      color: ${GRAY_SCALE.grade4};
     }
     &:focus,
     &:active {
       outline: 0;
-      border: 1px solid #0d643a;
+      border: 1px solid ${PRIMARY.grade2};
     }
   }
 `;
 export const hoverBgColor = {
   primary: css`
-    background: #0d643a;
+    background: ${PRIMARY.grade2};
     &:hover {
-      background: #06522d;
+      background: ${PRIMARY.grade3};
     }
   `,
   white: css`
@@ -45,7 +62,7 @@ export const buttons = {
         width: 140px;
         height: 40px;
         ${hoverBgColor.white}
-        border: 1px solid #0d643a;
+        border: 1px solid${PRIMARY.grade2};
       }
     `,
     primary: css`
@@ -169,7 +186,7 @@ const GlobalStyle = createGlobalStyle`
   color:rgb(28, 28, 28)}
   button{
     cursor:pointer;
-    background-color: #fff;
+    background-color: transparent;
     border:0;
   }
 

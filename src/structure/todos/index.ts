@@ -3,8 +3,10 @@ import { Action, AnyAction } from "redux";
 import {
   ADD_TODO,
   REMOVE_TODO,
-  TOGGLE_TODO,
   EMPTY_TODOS,
+  TOGGLE_CHECK_TODO,
+  REMOVE_CHECKED_TODOS,
+  ALL_CHECKED_TODOS,
 } from "./../../redux/reducers/todos/";
 export type Todo = {
   id: string;
@@ -35,8 +37,8 @@ export interface RemoveTodo {
     id: string;
   };
 }
-export interface ToggleTodo {
-  type: typeof TOGGLE_TODO;
+export interface ToggleCheckTodo {
+  type: typeof TOGGLE_CHECK_TODO;
   payload: {
     id: string;
   };
@@ -45,4 +47,16 @@ export interface EmptyTodos {
   type: typeof EMPTY_TODOS;
 }
 
-export type TodosDispatchType = AddTodo | RemoveTodo | ToggleTodo | EmptyTodos;
+export interface RemoveCheckedTodos {
+  type: typeof REMOVE_CHECKED_TODOS;
+}
+export interface AllCheckedTodos {
+  type: typeof ALL_CHECKED_TODOS;
+}
+export type TodosDispatchType =
+  | AddTodo
+  | RemoveTodo
+  | ToggleCheckTodo
+  | EmptyTodos
+  | RemoveCheckedTodos
+  | AllCheckedTodos;
