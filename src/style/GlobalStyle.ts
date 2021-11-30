@@ -66,10 +66,15 @@ export const buttons = {
       }
     `,
     primary: css`
+      width: 140px;
+      max-width: 30%;
+      height: 40px;
+      ${hoverBgColor.primary}
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
       button {
-        width: 140px;
-        height: 40px;
-        ${hoverBgColor.primary}
         color: #fff;
       }
     `,

@@ -8,12 +8,17 @@ import Button from "../../../common/Button";
 import Input from "../../../common/Input";
 import TodoItemControllButtons from "./TodoItemControllButtons";
 const Block = styled.form`
+  margin-top: 100px;
   display: flex;
   flex-wrap: wrap;
   .input-button-area {
     display: flex;
     justify-content: center;
-    width: 100%;
+    width: 428px;
+    margin: 0 auto;
+    input {
+      flex-grow: 1;
+    }
   }
   .controll-button-area {
     width: 100%;

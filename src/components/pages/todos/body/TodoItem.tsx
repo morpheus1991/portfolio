@@ -70,6 +70,7 @@ const TodoItem = ({ id, content, checked }: Props) => {
         name="checkbox"
         onChange={toggleChecked}
         labelShow={false}
+        checked={checked}
       />
       <div className="content-button-area">
         <p>{content}</p> <button onClick={deleteTodo}>삭제</button>

@@ -6,6 +6,9 @@ import { combineReducersState, TodosState } from "../../../../structure/todos";
 import TodoItem from "./TodoItem";
 
 const Block = styled.div`
+  width: 428px;
+  max-width: 100%;
+  margin: 0 auto;
   margin-top: 40px;
 `;
 const TodoBody = () => {
@@ -14,7 +17,7 @@ const TodoBody = () => {
   const todos = useSelector((state: combineReducersState) => state.todos);
   console.log(todos);
   return (
-    <Block className="todos-header">
+    <Block className="todos-body">
       <ul>
         {todos.todos.map((item) => (
           <TodoItem
