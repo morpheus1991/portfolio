@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Ability from "./Ability";
 import CoverSlide from "./CoverSlide";
 
 const Block = styled.div`
@@ -10,6 +11,7 @@ const PageMain = () => {
   return (
     <Block>
       <CoverSlide></CoverSlide>
+      <Ability></Ability>
     </Block>
   );
 };
