@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Header from "../../layout/header/Header";
 import TodoBody from "./body/TodoBody";
 import TodoHeader from "./header/TodoHeader";
 
@@ -18,11 +19,13 @@ const Block = styled.div`
 
 const PageTodos = () => {
   return (
-    <Block>
-      <h2>TodoList</h2>
-      <TodoHeader></TodoHeader>
-      <TodoBody></TodoBody>
-    </Block>
+    <div>
+      <Block>
+        <h2>TodoList</h2>
+        <TodoHeader></TodoHeader>
+        <TodoBody></TodoBody>
+      </Block>
+    </div>
   );
 };
 

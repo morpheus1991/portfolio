@@ -182,6 +182,11 @@ const GlobalStyle = createGlobalStyle`
     height:100%;
   }
 
+  body{
+    &.popup-open{
+      overflow-y: hidden;
+    }
+  }
   * {
     font-family: 'Spoqa Han Sans';
     box-sizing: border-box !important;
@@ -194,14 +199,21 @@ const GlobalStyle = createGlobalStyle`
   }
   li{list-style:none;}
   a{text-decoration:none;
+    cursor:none;
 
   color:rgb(28, 28, 28)}
   button{
-    cursor:pointer;
+    cursor:none;
     background-color: transparent;
     border:0;
   }
 
+  input{
+    cursor: none;
+  }
+  label{
+    cursor: none;
+  }
   section{
     .inner-container{
       width: 1140px; 
