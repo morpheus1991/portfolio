@@ -89,10 +89,10 @@ const CoverSlide = () => {
       const percentValue = Math.abs(
         Math.round((relativeTop / (targetRect.height - windowHeight / 2)) * 100)
       );
-      console.log(percentValue);
+      // console.log(percentValue);
       const per = percentValue * ratio > 100 ? 100 : percentValue * ratio;
       const player = ({ start, end, el, hold, f }: playerProps) => {
-        console.log(per);
+        // console.log(per);
         if (true) {
           const range = end - start;
           const progressValue = per - start;
@@ -171,7 +171,7 @@ const CoverSlide = () => {
             </span>
           </span>
         </span>
-        <div className="name">조민혁입니다.</div>
+        <div className="name">스크립트냥 입니다.</div>
       </div>
       <div className="empty"></div>
     </Block>

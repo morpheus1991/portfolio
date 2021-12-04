@@ -1,9 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
-import { GRAY_SCALE, PRIMARY } from "../../../style/GlobalStyle";
+import { fontSize, GRAY_SCALE, PRIMARY } from "../../../style/GlobalStyle";
 const Block = styled.div`
   padding-top: 700px;
   display: flex;
+  transform: translateY();
   .title-area {
     position: sticky;
     top: 0;
@@ -19,6 +20,8 @@ const Block = styled.div`
       margin-top: 30vh;
       padding-right: 5%;
       height: 40vh;
+      background: #fff;
+
       /* padding-bottom: 30vh; */
       border: 1px solid ${PRIMARY.grade2};
       color: ${PRIMARY.grade2};
@@ -42,9 +45,10 @@ const Block = styled.div`
     padding-bottom: 30vh;
     padding-top: 40vh;
     padding-left: 30px;
+    overflow: hidden;
   }
   ul {
-    > li {
+    > .item {
       width: 340px;
       transition: 0.5s;
       opacity: 0.2;
@@ -86,12 +90,127 @@ const Block = styled.div`
           margin-top: 14px;
         }
       }
+      &.item1 {
+        .image-area {
+          background-image: url(image/ability/ability1.png);
+        }
+      }
+      &.item2 {
+        .image-area {
+          background-image: url(image/ability/ability2.png);
+        }
+      }
+      &.item3 {
+        .image-area {
+          background-image: url(image/ability/ability5.png);
+        }
+      }
+      &.item4 {
+        .image-area {
+          background-image: url(image/ability/ability4.png);
+        }
+      }
+      &.item5 {
+        .image-area {
+          background-image: url(image/ability/ability3.png);
+        }
+      }
+      &.item6 {
+        .image-area {
+          background-image: url(image/ability/ability7.png);
+        }
+      }
+      &.item7 {
+        .image-area {
+          background-image: url(image/ability/ability11.png);
+        }
+      }
+      &.item8 {
+        .image-area {
+          background-image: url(image/ability/ability10.png);
+        }
+      }
+      &.item9 {
+        .image-area {
+          background-image: url(image/ability/ability6.png);
+        }
+      }
+      &.item10 {
+        .image-area {
+          background-image: url(image/ability/ability15.png);
+        }
+      }
+      &.item11 {
+        .image-area {
+          background-image: url(image/ability/ability12.png);
+        }
+      }
+      &.item12 {
+        .image-area {
+          background-image: url(image/ability/ability13.png);
+        }
+      }
+      &.item13 {
+        .image-area {
+          background-image: url(image/ability/ability16.png);
+        }
+      }
+      &.item14 {
+        .image-area {
+          background-image: url(image/ability/ability18.png);
+        }
+      }
+      &.item15 {
+        .image-area {
+          background-image: url(image/ability/ability9.png);
+        }
+      }
+      &.item16 {
+        .image-area {
+          background-image: url(image/ability/ability19.png);
+        }
+      }
+      &.item17 {
+        .image-area {
+          background-image: url(image/ability/ability19.png);
+        }
+      }
+      &.item18 {
+        .image-area {
+          background-image: url(image/ability/ability1.png);
+        }
+      }
     }
   }
 `;
 const Ability = () => {
   const blockRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<HTMLUListElement>(null);
   const innerHeight = window.innerHeight;
+  let isPlay = true;
+  const skewConfigs = {
+    ease: 0.1,
+    current: 0,
+    previous: 0,
+    rounded: 0,
+  };
+  let skewScrollingController: any;
+  const skewScrolling = () => {
+    if (isPlay) {
+      skewConfigs.current = window.scrollY;
+      skewConfigs.previous +=
+        (skewConfigs.current - skewConfigs.previous) * skewConfigs.ease;
+      skewConfigs.rounded = Math.round(skewConfigs.previous * 100) / 100;
+      //variables
+      const difference = skewConfigs.current - skewConfigs.rounded;
+      const acceleration = difference / window.innerWidth;
+      const velocity = +acceleration;
+      const skew = velocity * 50.5;
+      //
+      scrollRef.current!.style.transform = `skewY(${skew}deg)`;
+      requestAnimationFrame(skewScrolling);
+    }
+  };
   useEffect(() => {
     const targets = blockRef.current?.querySelectorAll(
       ".list >li"
@@ -108,7 +227,7 @@ const Ability = () => {
     window.addEventListener("scroll", () => {
       targets.forEach((item, i) => {
         if (elementsTopValues[i] - window.scrollY - innerHeight * 0.5 < 0) {
-          console.log(elementsTopValues[i]);
+          // console.log(elementsTopValues[i]);
           item.classList.add("active");
         } else {
           item.classList.remove("active");
@@ -117,6 +236,14 @@ const Ability = () => {
     });
     return () => {};
   }, []);
+  useEffect(() => {
+    window.requestAnimationFrame(() => skewScrolling());
+
+    return () => {
+      isPlay = false;
+    };
+  }, []);
+
   return (
     <Block ref={blockRef}>
       <div className="title-area">
@@ -128,8 +255,8 @@ const Ability = () => {
         </div>
       </div>
       <div className="list-area">
-        <ul className="list">
-          <li>
+        <ul className="list" ref={scrollRef}>
+          <li className="item item1">
             <div className="image-area">
               <img src="" alt="" />
             </div>
@@ -138,7 +265,7 @@ const Ability = () => {
               <dd>간단한 이벤트 페이지부터 퍼블리싱을 시작했었어요.</dd>
             </dl>
           </li>
-          <li>
+          <li className="item item2">
             <div className="image-area">
               <img src="" alt="" />
             </div>
@@ -147,7 +274,7 @@ const Ability = () => {
               <dd>머리를 빡빡 밀고 공부하고 또 공부했어요.</dd>
             </dl>
           </li>
-          <li>
+          <li className="item item3">
             <div className="image-area">
               <img src="" alt="" />
             </div>
@@ -156,7 +283,7 @@ const Ability = () => {
               <dd>매일 공부하고, 열심히 일했어요.</dd>
             </dl>
           </li>
-          <li>
+          <li className="item item4">
             <div className="image-area">
               <img src="" alt="" />
             </div>
@@ -167,7 +294,7 @@ const Ability = () => {
               </dd>
             </dl>
           </li>
-          <li>
+          <li className="item item5">
             <div className="image-area">
               <img src="" alt="" />
             </div>
@@ -176,7 +303,7 @@ const Ability = () => {
               <dd>출퇴근 하는 지하철에서 졸더라도 계속해서 듣고 또들어요.</dd>
             </dl>
           </li>
-          <li>
+          <li className="item item6">
             <div className="image-area">
               <img src="" alt="" />
             </div>
@@ -187,7 +314,7 @@ const Ability = () => {
               <dd>타입스크립트와 리엑트도 시작했어요.</dd>
             </dl>
           </li>
-          <li>
+          <li className="item item7">
             <div className="image-area">
               <img src="" alt="" />
             </div>
@@ -199,7 +326,7 @@ const Ability = () => {
               </dd>
             </dl>
           </li>
-          <li>
+          <li className="item item8">
             <div className="image-area">
               <img src="" alt="" />
             </div>
@@ -211,7 +338,7 @@ const Ability = () => {
               </dd>
             </dl>
           </li>
-          <li>
+          <li className="item item9">
             <div className="image-area">
               <img src="" alt="" />
             </div>
@@ -223,7 +350,7 @@ const Ability = () => {
               </dd>
             </dl>
           </li>
-          <li>
+          <li className="item item10">
             <div className="image-area">
               <img src="" alt="" />
             </div>
@@ -235,7 +362,7 @@ const Ability = () => {
               </dd>
             </dl>
           </li>
-          <li>
+          <li className="item item11">
             <div className="image-area">
               <img src="" alt="" />
             </div>
@@ -247,7 +374,7 @@ const Ability = () => {
               </dd>
             </dl>
           </li>
-          <li>
+          <li className="item item12">
             <div className="image-area">
               <img src="" alt="" />
             </div>
@@ -261,7 +388,7 @@ const Ability = () => {
               </dd>
             </dl>
           </li>
-          <li>
+          <li className="item item13">
             <div className="image-area">
               <img src="" alt="" />
             </div>
@@ -275,7 +402,7 @@ const Ability = () => {
               </dd>
             </dl>
           </li>
-          <li>
+          <li className="item item14">
             <div className="image-area">
               <img src="" alt="" />
             </div>
@@ -290,7 +417,7 @@ const Ability = () => {
               </dd>
             </dl>
           </li>
-          <li>
+          <li className="item item15">
             <div className="image-area">
               <img src="" alt="" />
             </div>
@@ -304,7 +431,7 @@ const Ability = () => {
               </dd>
             </dl>
           </li>
-          <li>
+          <li className="item item16">
             <div className="image-area">
               <img src="" alt="" />
             </div>

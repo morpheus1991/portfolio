@@ -48,6 +48,9 @@ const Header = () => {
           <li>
             <Link to="works">works</Link>
           </li>
+          <li>
+            <Link to="youtube">youtube</Link>
+          </li>
         </ul>
       </nav>
     </Block>

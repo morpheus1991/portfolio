@@ -11,6 +11,7 @@ import Header from "./components/layout/header/Header";
 import PageMain from "./components/pages/main/PageMain";
 import PageWorks from "./components/pages/works/PageWorks";
 import MousePointCustom from "./components/common/MousePointCustom";
+import PageYoutube from "./components/pages/youtube.tsx/PageYoutube";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       <Route exact path="/todoList" component={PageTodos}></Route>
       <Route exact path="/main" component={PageMain}></Route>
       <Route exact path="/works" component={PageWorks}></Route>
+      <Route exact path="/youtube" component={PageYoutube}></Route>
     </div>
   );
 }
