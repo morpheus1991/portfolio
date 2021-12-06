@@ -1,62 +1,125 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { GRAY_SCALE, PRIMARY } from "../../../style/GlobalStyle";
+import theme from "../../../style/theme";
 
 const Block = styled.div`
-  display: flex;
-  height: 100vh;
-  word-break: keep-all;
-  .title-area {
-    width: 50%;
-    background: #fff;
-    color: ${PRIMARY.grade3};
+  @media ${theme.media.desktop} {
     display: flex;
-    align-items: end;
-    justify-content: center;
-    font-size: 3em;
-    line-height: 2em;
-    transition: all 0.7s ease-in-out;
-    h3 {
-      text-align: left;
-      font-weight: normal;
-    }
-  }
-  .change-area {
-    width: 50%;
-    background: ${PRIMARY.grade3};
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: ${PRIMARY.grade3};
-    font-size: 1.3em;
-    text-align: left;
-    transition: all 0.7s ease-in-out;
-    .inner {
-      max-width: 80%;
-      .value {
-        font-size: 7em;
-        justify-content: center;
-        display: flex;
-        transform: translateY(-100%);
-        transition: all 0.7s ease-in-out;
-        margin-bottom: 20px;
-      }
-      p {
-        text-align: center;
-      }
-    }
-  }
-  &.active {
+    height: 100vh;
+    word-break: keep-all;
     .title-area {
-      background: ${PRIMARY.grade3};
-      color: #fff;
+      width: 50%;
+      background: #fff;
+      color: ${PRIMARY.grade3};
+      display: flex;
+      align-items: end;
+      justify-content: center;
+      font-size: 3em;
+      line-height: 2em;
+      transition: all 0.7s ease-in-out;
+      h3 {
+        text-align: left;
+        font-weight: normal;
+      }
     }
     .change-area {
-      background: #fff;
-      .value {
-        transform: translateY(0);
+      width: 50%;
+      background: ${PRIMARY.grade3};
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: ${PRIMARY.grade3};
+      font-size: 1.3em;
+      text-align: left;
+      transition: all 0.7s ease-in-out;
+      .inner {
+        max-width: 80%;
+        .value {
+          font-size: 7em;
+          justify-content: center;
+          display: flex;
+          transform: translateY(-100%);
+          transition: all 0.7s ease-in-out;
+          margin-bottom: 20px;
+        }
+        p {
+          text-align: center;
+        }
       }
-      > .inner {
+    }
+    &.active {
+      .title-area {
+        background: ${PRIMARY.grade3};
+        color: #fff;
+      }
+      .change-area {
+        background: #fff;
+        .value {
+          transform: translateY(0);
+        }
+        > .inner {
+        }
+      }
+    }
+  }
+  @media ${theme.media.mobile} {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100vh;
+    word-break: keep-all;
+    .title-area {
+      width: 100%;
+      background: #fff;
+      color: ${PRIMARY.grade3};
+      display: flex;
+      align-items: end;
+      justify-content: center;
+      font-size: 3em;
+      line-height: 2em;
+      transition: all 0.7s ease-in-out;
+      h3 {
+        text-align: left;
+        font-weight: normal;
+      }
+    }
+    .change-area {
+      width: 100%;
+      background: ${PRIMARY.grade3};
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: ${PRIMARY.grade3};
+      font-size: 1.3em;
+      text-align: left;
+      transition: all 0.7s ease-in-out;
+      .inner {
+        max-width: 80%;
+        .value {
+          font-size: 7em;
+          justify-content: center;
+          display: flex;
+          transform: translateY(-140%);
+          transition: all 0.7s ease-in-out;
+          margin-bottom: 20px;
+        }
+        p {
+          text-align: center;
+        }
+      }
+    }
+    &.active {
+      .title-area {
+        background: ${PRIMARY.grade3};
+        color: #fff;
+      }
+      .change-area {
+        background: #fff;
+        .value {
+          transform: translateY(0);
+        }
+        > .inner {
+        }
       }
     }
   }

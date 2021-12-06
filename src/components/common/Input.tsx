@@ -11,6 +11,7 @@ interface Props {
   labelShow?: boolean;
   value?: string;
   checked?: boolean;
+  inputRef?: React.RefObject<HTMLInputElement>;
 }
 
 /* 인풋 요소 반환
@@ -36,7 +37,7 @@ export const InputStyle = {
               /* background: red; */
               width: 22px;
               height: 22px;
-              background: url(/image/radio-checked.png) no-repeat;
+              background: url(image/radio-checked.png) no-repeat;
               border: 0;
             }
           }
@@ -55,8 +56,7 @@ export const InputStyle = {
               width: 20px;
               height: 20px;
               border: 0;
-
-              background: url(/image/checkbox-checked.png) no-repeat;
+              background: url(image/checkbox-checked.png) no-repeat;
             }
           }
         }
@@ -66,7 +66,17 @@ export const InputStyle = {
 };
 const Input = React.forwardRef(
   (
-    { type, placeholder, id, name, onChange, labelShow, value, checked }: Props,
+    {
+      type,
+      placeholder,
+      id,
+      name,
+      onChange,
+      labelShow,
+      value,
+      checked,
+      inputRef,
+    }: Props,
     ref: React.ForwardedRef<HTMLInputElement>
   ) => {
     const radioAndcheckbox = ["radio", "checkbox"];
@@ -100,7 +110,7 @@ const Input = React.forwardRef(
               id={id}
               name={name}
               onChange={onChange as ChangeEventHandler<HTMLInputElement>}
-              ref={ref}
+              ref={inputRef ? inputRef : null}
             ></input>
             <label htmlFor={id} className={labelShow ? "" : "blind"}>
               {name ? name : id}

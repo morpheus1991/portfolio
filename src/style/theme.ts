@@ -2,7 +2,7 @@ const color = {
   white: "white",
   black: "black",
 };
-const size = {
+export const size = {
   desktop: "768",
 };
 

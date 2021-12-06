@@ -1,72 +1,135 @@
 import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { GRAY_SCALE, PRIMARY } from "../../../style/GlobalStyle";
+import theme from "../../../style/theme";
 
 const Block = styled.div`
-  /* background: red; */
-  .text-area {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    position: sticky;
-    top: 0;
-    padding-top: 400px;
-    .greeting {
-      font-size: 2.5em;
-      font-weight: bold;
-      width: 100%;
-      opacity: 0;
-      transform: scale(140%);
-    }
-    .cover-slide-area {
-      width: 100%;
-      margin-top: 40px;
-
-      .items {
-        position: relative;
-        height: 80px;
-        overflow: hidden;
+  @media ${theme.media.desktop} {
+    .text-area {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: sticky;
+      top: 0 !important;
+      padding-top: 400px;
+      .greeting {
+        font-size: 2.5em;
+        font-weight: bold;
+        width: 100%;
         opacity: 0;
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
-        width: 100%;
+        transform: scale(140%);
       }
-      span {
-        height: 100%;
+      .cover-slide-area {
         width: 100%;
-        text-align: center;
-        position: absolute;
-        background: #fff;
+        margin-top: 40px;
+
+        .items {
+          position: relative;
+          height: 80px;
+          overflow: hidden;
+          opacity: 0;
+          display: flex;
+          align-items: flex-end;
+          justify-content: center;
+          width: 100%;
+        }
+        span {
+          height: 100%;
+          width: 100%;
+          text-align: center;
+          position: absolute;
+          background: #fff;
+          font-size: 1.5em;
+          display: block;
+          line-height: 80px;
+        }
+        .border-top {
+          display: block;
+          height: 4px;
+          width: 100%;
+          background: ${PRIMARY.grade2};
+          position: absolute;
+          top: -4px;
+        }
+      }
+      .name {
+        margin-top: 200px;
         font-size: 1.5em;
-        display: block;
-        line-height: 80px;
-      }
-      .border-top {
-        display: block;
-        height: 4px;
-        width: 100%;
-        background: ${PRIMARY.grade2};
-        position: absolute;
-        top: -4px;
+        opacity: 0;
+        transition: 0.4s;
       }
     }
-    .name {
-      margin-top: 200px;
-      font-size: 1.5em;
-      opacity: 0;
-      transition: 0.4s;
+    .empty {
+      height: ${window.innerHeight * 3 + "px"};
     }
   }
-  .empty {
-    height: ${window.innerHeight * 3 + "px"};
+  @media ${theme.media.mobile} {
+    .text-area {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: sticky;
+      position: -webkit-sticky;
+      top: 0;
+      padding-top: 200px;
+      /* background: red; */
+      .greeting {
+        font-size: 20px;
+        font-weight: bold;
+        width: 100%;
+        opacity: 0;
+        transform: scale(140%);
+      }
+      .cover-slide-area {
+        width: 100%;
+        margin-top: 30px;
+
+        .items {
+          position: relative;
+          height: 80px;
+          overflow: hidden;
+          opacity: 0;
+          display: flex;
+          align-items: flex-end;
+          justify-content: center;
+          width: 100%;
+        }
+        span {
+          height: 100%;
+          width: 100%;
+          text-align: center;
+          position: absolute;
+          background: #fff;
+          font-size: 1.5em;
+          display: block;
+          line-height: 80px;
+        }
+        .border-top {
+          display: block;
+          height: 4px;
+          width: 100%;
+          background: ${PRIMARY.grade2};
+          position: absolute;
+          top: -4px;
+        }
+      }
+      .name {
+        margin-top: 200px;
+        font-size: 20px;
+        opacity: 0;
+        transition: 0.4s;
+      }
+    }
+    .empty {
+      min-height: ${window.innerHeight * 2 + "px"};
+    }
   }
 `;
 const CoverSlide = () => {
   const targetRef = useRef<HTMLDivElement>(null);
 
-  //스크롤 영역 구해야함 (전체 높이 - innerHeight)
-  //스타트 포인트 = getBoundingClientRect.top
+  // 스크롤 영역 구해야함 (전체 높이 - innerHeight)
+  // 스타트 포인트 = getBoundingClientRect.top
   useEffect(() => {
     const coverEl = document.querySelector(".cover") as HTMLElement;
     const nameEl = document.querySelector(".name") as HTMLElement;

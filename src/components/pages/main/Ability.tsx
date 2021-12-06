@@ -1,183 +1,374 @@
 import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { fontSize, GRAY_SCALE, PRIMARY } from "../../../style/GlobalStyle";
+import theme from "../../../style/theme";
 const Block = styled.div`
-  padding-top: 700px;
-  display: flex;
-  transform: translateY();
-  .title-area {
-    position: sticky;
-    top: 0;
-    width: 50%;
-    background: #fff;
-    height: 200px;
-    font-size: 1.5em;
-    > .inner {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      flex-wrap: wrap;
-      margin-top: 30vh;
-      padding-right: 5%;
-      height: 40vh;
+  @media ${theme.media.desktop} {
+    padding-top: 50vh;
+    display: flex;
+    transform: translateY();
+    .title-area {
+      position: sticky;
+      top: 0;
+      width: 50%;
       background: #fff;
+      height: 200px;
+      font-size: 1.5em;
+      > .inner {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-top: 30vh;
+        padding-right: 5%;
+        height: 40vh;
+        background: #fff;
 
-      /* padding-bottom: 30vh; */
-      border: 1px solid ${PRIMARY.grade2};
-      color: ${PRIMARY.grade2};
-      > .text-wrapper {
-      }
-    }
-    span {
-      width: 100%;
-      display: flex;
-      justify-content: flex-start;
-    }
-    h3 {
-      width: 100%;
-      display: flex;
-      justify-content: flex-start;
-    }
-  }
-  .list-area {
-    width: 50%;
-    /* background: blue; */
-    padding-bottom: 30vh;
-    padding-top: 40vh;
-    padding-left: 30px;
-    overflow: hidden;
-  }
-  ul {
-    > .item {
-      width: 340px;
-      transition: 0.5s;
-      opacity: 0.2;
-      /* opacity: 1; */
-      &.active {
-        opacity: 1;
-      }
-      &:nth-child(even) {
-        /* background: red; */
-        position: relative;
-        transform: translateX(calc(110%));
-        /* height: 214px; */
-        /* margin-left: 60px; */
-      }
-      &:last-child {
-        /* padding-bottom: 160px; */
-      }
-      .image-area {
-        height: 448px;
-        background: #c49c9c;
-        & + .text-area {
-          margin-top: 40px;
+        /* padding-bottom: 30vh; */
+        border: 1px solid ${PRIMARY.grade2};
+        color: ${PRIMARY.grade2};
+        > .text-wrapper {
         }
       }
-      .image-area {
-        height: 448px;
-        background: #dabcbc;
-        & + .text-area {
-          margin-top: 40px;
-        }
-      }
-      .text-area {
+      span {
         width: 100%;
-        text-align: center;
-        color: ${GRAY_SCALE.grade8};
-        dt {
+        display: flex;
+        justify-content: flex-start;
+      }
+      h3 {
+        margin-top: 30px;
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+      }
+    }
+    .list-area {
+      width: 50%;
+      /* background: blue; */
+      padding-bottom: 30vh;
+      padding-top: 40vh;
+      padding-left: 30px;
+      overflow: hidden;
+    }
+    ul {
+      > .item {
+        width: 340px;
+        transition: 0.5s;
+        opacity: 0.2;
+        /* opacity: 1; */
+        &.active {
+          opacity: 1;
         }
-        dd {
-          margin-top: 14px;
+        &:nth-child(even) {
+          /* background: red; */
+          position: relative;
+          transform: translateX(calc(110%));
+          /* height: 214px; */
+          /* margin-left: 60px; */
+        }
+        &:last-child {
+          /* padding-bottom: 160px; */
+        }
+        .image-area {
+          height: 448px;
+          background: #c49c9c;
+          & + .text-area {
+            margin-top: 40px;
+          }
+        }
+        .image-area {
+          height: 448px;
+          background: #dabcbc;
+          & + .text-area {
+            margin-top: 40px;
+          }
+        }
+        .text-area {
+          width: 100%;
+          text-align: center;
+          color: ${GRAY_SCALE.grade8};
+          dt {
+          }
+          dd {
+            margin-top: 14px;
+          }
+        }
+        &.item1 {
+          .image-area {
+            background-image: url(image/ability/ability1.png);
+          }
+        }
+        &.item2 {
+          .image-area {
+            background-image: url(image/ability/ability2.png);
+          }
+        }
+        &.item3 {
+          .image-area {
+            background-image: url(image/ability/ability5.png);
+          }
+        }
+        &.item4 {
+          .image-area {
+            background-image: url(image/ability/ability4.png);
+          }
+        }
+        &.item5 {
+          .image-area {
+            background-image: url(image/ability/ability3.png);
+          }
+        }
+        &.item6 {
+          .image-area {
+            background-image: url(image/ability/ability7.png);
+          }
+        }
+        &.item7 {
+          .image-area {
+            background-image: url(image/ability/ability11.png);
+          }
+        }
+        &.item8 {
+          .image-area {
+            background-image: url(image/ability/ability10.png);
+          }
+        }
+        &.item9 {
+          .image-area {
+            background-image: url(image/ability/ability6.png);
+          }
+        }
+        &.item10 {
+          .image-area {
+            background-image: url(image/ability/ability15.png);
+          }
+        }
+        &.item11 {
+          .image-area {
+            background-image: url(image/ability/ability12.png);
+          }
+        }
+        &.item12 {
+          .image-area {
+            background-image: url(image/ability/ability13.png);
+          }
+        }
+        &.item13 {
+          .image-area {
+            background-image: url(image/ability/ability16.png);
+          }
+        }
+        &.item14 {
+          .image-area {
+            background-image: url(image/ability/ability18.png);
+          }
+        }
+        &.item15 {
+          .image-area {
+            background-image: url(image/ability/ability9.png);
+          }
+        }
+        &.item16 {
+          .image-area {
+            background-image: url(image/ability/ability19.png);
+          }
+        }
+        &.item17 {
+          .image-area {
+            background-image: url(image/ability/ability19.png);
+          }
+        }
+        &.item18 {
+          .image-area {
+            background-image: url(image/ability/ability1.png);
+          }
         }
       }
-      &.item1 {
-        .image-area {
-          background-image: url(image/ability/ability1.png);
+    }
+  }
+  @media ${theme.media.mobile} {
+    padding-top: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    transform: translateY();
+    .title-area {
+      top: 0;
+      width: 100%;
+      background: #fff;
+      font-size: 20px;
+      > .inner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-top: 30vh;
+        padding-right: 5%;
+        height: 40vh;
+        background: #fff;
+
+        /* padding-bottom: 30vh; */
+        border: 1px solid ${PRIMARY.grade2};
+        color: ${PRIMARY.grade2};
+        > .text-wrapper {
         }
       }
-      &.item2 {
-        .image-area {
-          background-image: url(image/ability/ability2.png);
-        }
+      span {
+        width: 100%;
+        display: flex;
+        justify-content: center;
       }
-      &.item3 {
-        .image-area {
-          background-image: url(image/ability/ability5.png);
-        }
+      h3 {
+        width: 100%;
+        display: flex;
+        justify-content: center;
       }
-      &.item4 {
-        .image-area {
-          background-image: url(image/ability/ability4.png);
+    }
+    .list-area {
+      width: 100%;
+      /* background: blue; */
+      padding-bottom: 30vh;
+      padding-top: 10vh;
+      overflow: hidden;
+    }
+    ul {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      > .item {
+        margin: 0 auto;
+        width: 340px;
+        transition: 0.5s;
+        opacity: 0.2;
+        & + .item {
+          margin-top: 10vh;
         }
-      }
-      &.item5 {
-        .image-area {
-          background-image: url(image/ability/ability3.png);
+        /* opacity: 1; */
+        &.active {
+          opacity: 1;
         }
-      }
-      &.item6 {
-        .image-area {
-          background-image: url(image/ability/ability7.png);
+        &:nth-child(even) {
+          /* background: red; */
+          position: relative;
+          /* display: flex; */
+          /* height: 214px; */
+          /* margin-left: 60px; */
         }
-      }
-      &.item7 {
-        .image-area {
-          background-image: url(image/ability/ability11.png);
+        &:last-child {
+          /* padding-bottom: 160px; */
         }
-      }
-      &.item8 {
         .image-area {
-          background-image: url(image/ability/ability10.png);
+          height: 448px;
+          background: #c49c9c;
+          & + .text-area {
+            margin-top: 40px;
+          }
         }
-      }
-      &.item9 {
         .image-area {
-          background-image: url(image/ability/ability6.png);
+          height: 448px;
+          background: #dabcbc;
+          & + .text-area {
+            margin-top: 40px;
+          }
         }
-      }
-      &.item10 {
-        .image-area {
-          background-image: url(image/ability/ability15.png);
+        .text-area {
+          width: 100%;
+          text-align: center;
+          color: ${GRAY_SCALE.grade8};
+          dt {
+          }
+          dd {
+            margin-top: 14px;
+          }
         }
-      }
-      &.item11 {
-        .image-area {
-          background-image: url(image/ability/ability12.png);
+        &.item1 {
+          .image-area {
+            background-image: url(image/ability/ability1.png);
+          }
         }
-      }
-      &.item12 {
-        .image-area {
-          background-image: url(image/ability/ability13.png);
+        &.item2 {
+          .image-area {
+            background-image: url(image/ability/ability2.png);
+          }
         }
-      }
-      &.item13 {
-        .image-area {
-          background-image: url(image/ability/ability16.png);
+        &.item3 {
+          .image-area {
+            background-image: url(image/ability/ability5.png);
+          }
         }
-      }
-      &.item14 {
-        .image-area {
-          background-image: url(image/ability/ability18.png);
+        &.item4 {
+          .image-area {
+            background-image: url(image/ability/ability4.png);
+          }
         }
-      }
-      &.item15 {
-        .image-area {
-          background-image: url(image/ability/ability9.png);
+        &.item5 {
+          .image-area {
+            background-image: url(image/ability/ability3.png);
+          }
         }
-      }
-      &.item16 {
-        .image-area {
-          background-image: url(image/ability/ability19.png);
+        &.item6 {
+          .image-area {
+            background-image: url(image/ability/ability7.png);
+          }
         }
-      }
-      &.item17 {
-        .image-area {
-          background-image: url(image/ability/ability19.png);
+        &.item7 {
+          .image-area {
+            background-image: url(image/ability/ability11.png);
+          }
         }
-      }
-      &.item18 {
-        .image-area {
-          background-image: url(image/ability/ability1.png);
+        &.item8 {
+          .image-area {
+            background-image: url(image/ability/ability10.png);
+          }
+        }
+        &.item9 {
+          .image-area {
+            background-image: url(image/ability/ability6.png);
+          }
+        }
+        &.item10 {
+          .image-area {
+            background-image: url(image/ability/ability15.png);
+          }
+        }
+        &.item11 {
+          .image-area {
+            background-image: url(image/ability/ability12.png);
+          }
+        }
+        &.item12 {
+          .image-area {
+            background-image: url(image/ability/ability13.png);
+          }
+        }
+        &.item13 {
+          .image-area {
+            background-image: url(image/ability/ability16.png);
+          }
+        }
+        &.item14 {
+          .image-area {
+            background-image: url(image/ability/ability18.png);
+          }
+        }
+        &.item15 {
+          .image-area {
+            background-image: url(image/ability/ability9.png);
+          }
+        }
+        &.item16 {
+          .image-area {
+            background-image: url(image/ability/ability19.png);
+          }
+        }
+        &.item17 {
+          .image-area {
+            background-image: url(image/ability/ability19.png);
+          }
+        }
+        &.item18 {
+          .image-area {
+            background-image: url(image/ability/ability1.png);
+          }
         }
       }
     }
@@ -207,8 +398,10 @@ const Ability = () => {
       const velocity = +acceleration;
       const skew = velocity * 50.5;
       //
-      scrollRef.current!.style.transform = `skewY(${skew}deg)`;
-      requestAnimationFrame(skewScrolling);
+      if (scrollRef.current) {
+        scrollRef.current!.style.transform = `skewY(${skew}deg)`;
+        requestAnimationFrame(skewScrolling);
+      }
     }
   };
   useEffect(() => {

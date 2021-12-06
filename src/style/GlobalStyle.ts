@@ -1,5 +1,6 @@
 // src/assets/styles/global-styles.ts
 import { createGlobalStyle, css } from "styled-components";
+import { size } from "./theme";
 // import { normalize } from "styled-normalize";
 
 // 위에서 받은 `normalize`로 기본 css가 초기화 합니다.
@@ -176,10 +177,13 @@ export const fontSize = {
   },
 };
 const GlobalStyle = createGlobalStyle`
+html{
+  cursor:${window.innerWidth >= Number(size.desktop) ? "none" : "pointer"};
 
+}
   html,
   body {
-    height:100%;
+    /* height:100%; */
   }
 
   body{
@@ -199,20 +203,20 @@ const GlobalStyle = createGlobalStyle`
   }
   li{list-style:none;}
   a{text-decoration:none;
-    cursor:none;
+   cursor:${window.innerWidth >= Number(size.desktop) ? "none" : "pointer"};
 
   color:rgb(28, 28, 28)}
   button{
-    cursor:none;
+    cursor:${window.innerWidth >= Number(size.desktop) ? "none" : "pointer"};
     background-color: transparent;
     border:0;
   }
 
   input{
-    cursor: none;
+    cursor:${window.innerWidth >= Number(size.desktop) ? "none" : "pointer"};
   }
   label{
-    cursor: none;
+    cursor:${window.innerWidth >= Number(size.desktop) ? "none" : "pointer"};
   }
   section{
     .inner-container{

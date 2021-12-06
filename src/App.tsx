@@ -6,12 +6,13 @@ import { TodosState } from "./structure/todos";
 import Input from "./components/common/Input";
 import PageTodos from "./components/pages/todos/PageTodos";
 import GlobalStyle from "./style/GlobalStyle";
-import { Route } from "react-router";
+import { Route, Switch } from "react-router";
 import Header from "./components/layout/header/Header";
 import PageMain from "./components/pages/main/PageMain";
 import PageWorks from "./components/pages/works/PageWorks";
 import MousePointCustom from "./components/common/MousePointCustom";
-import PageYoutube from "./components/pages/youtube.tsx/PageYoutube";
+import PageYoutube from "./components/pages/youtube/PageYoutube";
+import YoutubeRouter from "./subRouter/YoutubeRouter";
 
 function App() {
   return (
@@ -19,10 +20,13 @@ function App() {
       <GlobalStyle />
       <MousePointCustom></MousePointCustom>
       <Header></Header>
-      <Route exact path="/todoList" component={PageTodos}></Route>
-      <Route exact path="/main" component={PageMain}></Route>
-      <Route exact path="/works" component={PageWorks}></Route>
-      <Route exact path="/youtube" component={PageYoutube}></Route>
+      <Switch>
+        <Route exact path="/" component={PageMain}></Route>
+        <Route exact path="/todoList" component={PageTodos}></Route>
+        <Route exact path="/main" component={PageMain}></Route>
+        <Route exact path="/works" component={PageWorks}></Route>
+        <YoutubeRouter></YoutubeRouter>
+      </Switch>
     </div>
   );
 }

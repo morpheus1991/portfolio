@@ -1,131 +1,267 @@
 import React, { useRef, useEffect, useState } from "react";
 import styled from "styled-components";
 import { PRIMARY } from "../../../../style/GlobalStyle";
+import theme from "../../../../style/theme";
 import LayerPopup from "../../../common/LayerPopup";
 import ModalInner from "./ModalInner";
 
 const Block = styled.div`
-  margin-top: 100px;
-  .label {
-    transition: 0.5s;
-    left: 0;
-    right: 0;
-    margin: auto;
-    top: 0;
-    transform: translateY(-50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    max-width: 206px;
-    width: 100%;
-    height: 28px;
-    font-size: 14px;
-    color: #fff;
-    background: #3f3f3f;
-    border-radius: 27px;
-    position: absolute;
-  }
-  > ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    width: calc(294px * 2 + 10px);
-    margin: 0 auto;
-    > li {
-      position: relative;
-      width: 294px;
-      height: 340px;
-      border: 1px solid #e5e5e5;
+  @media ${theme.media.desktop} {
+    margin-top: 100px;
+
+    .label {
+      transition: 0.5s;
+      left: 0;
+      right: 0;
+      margin: auto;
+      top: 0;
+      transform: translateY(-50%);
       display: flex;
-      align-items: stretch;
+      align-items: center;
       justify-content: center;
-      margin-bottom: 24px;
-      word-break: keep-all;
-
-      &:hover {
-        .label {
-          transform: translateY(100%);
-        }
-        .hover-area {
-          opacity: 1;
-          visibility: visible;
-          > .title {
-            opacity: 1;
-            font-size: 20px;
-            visibility: visible;
-            background: ${PRIMARY.grade3};
-          }
-
-          > button {
-            bottom: 10px;
-            opacity: 1;
-            font-size: 20px;
-            visibility: visible;
-          }
-        }
-      }
-
-      > .inner {
-        padding-top: 40px;
-        .image-area {
-          width: 196px;
-          height: 133px;
-          color: ${PRIMARY.grade2};
-          margin: 0 auto;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          font-weight: bold;
-          word-break: keep-all;
-          line-height: 1.8;
-          letter-spacing: 0.2em;
-          font-size: 1.5em;
-        }
-        .date {
-          margin-top: 20px;
-        }
-        .description-area {
-          margin-top: 20px;
-          font-size: 12px;
-          line-height: 24px;
-          padding: 0 20px;
-          word-break: keep-all;
-        }
-      }
-      .hover-area {
-        top: 0;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        position: absolute;
-        margin: auto;
-        background: rgba(255, 255, 255, 0.97);
-        transition: 0.5s;
-        opacity: 0;
-        visibility: hidden;
+      max-width: 206px;
+      width: 100%;
+      height: 28px;
+      font-size: 14px;
+      color: #fff;
+      background: #3f3f3f;
+      border-radius: 27px;
+      position: absolute;
+    }
+    > ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      width: calc(294px * 2 + 10px);
+      margin: 0 auto;
+      > li {
+        position: relative;
+        width: 294px;
+        height: 340px;
+        border: 1px solid #e5e5e5;
         display: flex;
         align-items: stretch;
-        flex-wrap: wrap;
-        > .title {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 100%;
-          transition: 1s;
+        justify-content: center;
+        margin-bottom: 24px;
+        word-break: keep-all;
 
-          opacity: 0;
-          font-size: 10px;
-          visibility: hidden;
-          background: #fff;
-          color: #fff;
+        &:hover {
+          .label {
+            transform: translateY(100%);
+          }
+          .hover-area {
+            opacity: 1;
+            visibility: visible;
+            > .title {
+              opacity: 1;
+              font-size: 20px;
+              visibility: visible;
+              background: ${PRIMARY.grade3};
+            }
+
+            > button {
+              bottom: 10px;
+              opacity: 1;
+              font-size: 20px;
+              visibility: visible;
+            }
+          }
         }
-        > button {
-          width: 100%;
-          transition: 1s;
+
+        > .inner {
+          padding-top: 40px;
+          .image-area {
+            width: 196px;
+            height: 133px;
+            color: ${PRIMARY.grade2};
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            word-break: keep-all;
+            line-height: 1.8;
+            letter-spacing: 0.2em;
+            font-size: 1.5em;
+          }
+          .date {
+            margin-top: 20px;
+          }
+          .description-area {
+            margin-top: 20px;
+            font-size: 12px;
+            line-height: 24px;
+            padding: 0 20px;
+            word-break: keep-all;
+          }
+        }
+        .hover-area {
+          top: 0;
+          bottom: 0;
+          right: 0;
+          left: 0;
+          position: absolute;
+          margin: auto;
+          background: rgba(255, 255, 255, 0.97);
+          transition: 0.5s;
           opacity: 0;
-          font-size: 10px;
           visibility: hidden;
-          align-items: center;
+          display: flex;
+          align-items: stretch;
+          flex-wrap: wrap;
+          > .title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            transition: 1s;
+
+            opacity: 0;
+            font-size: 10px;
+            visibility: hidden;
+            background: #fff;
+            color: #fff;
+          }
+          > button {
+            width: 100%;
+            transition: 1s;
+            opacity: 0;
+            font-size: 10px;
+            visibility: hidden;
+            align-items: center;
+          }
+        }
+      }
+    }
+  }
+  @media ${theme.media.mobile} {
+    margin-top: 100px;
+
+    .label {
+      transition: 0.5s;
+      left: 0;
+      right: 0;
+      margin: auto;
+      top: 0;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 206px;
+      width: 100%;
+      height: 28px;
+      font-size: 14px;
+      color: #fff;
+      background: #3f3f3f;
+      border-radius: 27px;
+      position: absolute;
+    }
+    > ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin: 0 auto;
+      > li {
+        margin: 0 auto;
+        position: relative;
+        width: 100%;
+
+        width: 294px;
+        height: 340px;
+        border: 1px solid #e5e5e5;
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+        margin-bottom: 24px;
+        word-break: keep-all;
+
+        /* &:hover {
+          .label {
+            transform: translateY(100%);
+          }
+          .hover-area {
+            opacity: 1;
+            visibility: visible;
+            > .title {
+              opacity: 1;
+              font-size: 20px;
+              visibility: visible;
+              background: ${PRIMARY.grade3};
+            }
+
+            > button {
+              bottom: 10px;
+              opacity: 1;
+              font-size: 20px;
+              visibility: visible;
+            }
+          }
+        } */
+
+        > div {
+        }
+        .inner {
+          padding-top: 40px;
+          .image-area {
+            width: 196px;
+            height: 133px;
+            color: ${PRIMARY.grade2};
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            word-break: keep-all;
+            line-height: 1.8;
+            letter-spacing: 0.2em;
+            font-size: 1.5em;
+          }
+          .date {
+            margin-top: 20px;
+          }
+          .description-area {
+            margin-top: 20px;
+            font-size: 12px;
+            line-height: 24px;
+            padding: 0 20px;
+            word-break: keep-all;
+          }
+        }
+        .hover-area {
+          top: 0;
+          bottom: 0;
+          right: 0;
+          left: 0;
+          position: absolute;
+          margin: auto;
+          background: rgba(255, 255, 255, 0.97);
+          transition: 0.5s;
+          opacity: 0;
+          visibility: hidden;
+          display: flex;
+          align-items: stretch;
+          flex-wrap: wrap;
+          > .title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            transition: 1s;
+
+            opacity: 0;
+            font-size: 10px;
+            visibility: hidden;
+            background: #fff;
+            color: #fff;
+          }
+          > button {
+            width: 100%;
+            transition: 1s;
+            opacity: 0;
+            font-size: 10px;
+            visibility: hidden;
+            align-items: center;
+          }
         }
       }
     }
@@ -142,6 +278,7 @@ type Project = {
   theme: theme;
   contribution: string;
   date: string;
+  link?: string;
 };
 
 type Projects = Array<Project>;
@@ -151,6 +288,17 @@ interface Props {
 }
 const WorkList = () => {
   const mocprojects: Projects = [
+    {
+      title: "node백엔드 서버 구현",
+      description: "다면적 이해를 위한 학습",
+      workDescription: "플러그인 작업",
+      projecLabel: ["nodeJs", "backEnd", "express", "mongoose"],
+      skillLabel: ["javascript"],
+      theme: "study",
+      contribution: "100%",
+      date: "2021.12 ~ 2021.12",
+      link: "https://github.com/morpheus1991/blog",
+    },
     {
       title: "NextPage",
       description: "fullPage류의 플러그인 작업중",
@@ -165,6 +313,7 @@ const WorkList = () => {
       theme: "study",
       contribution: "100%",
       date: "2021.9 ~ 2021.9",
+      link: "https://github.com/morpheus1991/nextPage",
     },
     {
       title: "EverEx",
@@ -191,6 +340,7 @@ const WorkList = () => {
       theme: "study",
       contribution: "70%",
       date: "2021.6 ~ 2021.6",
+      link: "https://github.com/morpheus1991/430",
     },
     {
       title: "성남시 관광 사이트",
@@ -207,6 +357,7 @@ const WorkList = () => {
       theme: "work",
       contribution: "70%",
       date: "2020.12 ~ 2020.12",
+      link: "https://www.seongnam.go.kr/tour/main.do",
     },
     {
       title: "순환자원정보센터",
@@ -223,6 +374,7 @@ const WorkList = () => {
       theme: "work",
       contribution: "70%",
       date: "2020.09 ~ 2020.12",
+      link: "https://www.re.or.kr/main.do",
     },
     {
       title: "fiserv 리뉴얼 퍼블리싱",
@@ -239,6 +391,7 @@ const WorkList = () => {
       theme: "work",
       contribution: "70%",
       date: "2020.09 ~ 2020.10",
+      link: "https://www.fiservkorea.com/main.do",
     },
     {
       title: "KAVECON 2차 고도화",
@@ -256,6 +409,7 @@ const WorkList = () => {
       theme: "work",
       contribution: "70%",
       date: "2020.07 ~ 2020.08",
+      link: "https://www.kavecon.com/",
     },
     {
       title: "CHNNEL-리뉴얼",
@@ -280,6 +434,7 @@ const WorkList = () => {
       theme: "work",
       contribution: "70%",
       date: "2019.11 ~ 2020.02",
+      link: "http://koiha-kops.org/main.do",
     },
     {
       title: "창업투자시스템",
@@ -304,12 +459,14 @@ const WorkList = () => {
       theme: "work",
       contribution: "70%",
       date: "2019.11 ~ 2020.02",
+      link: "https://www.nowon.kr/www/index.html",
     },
   ];
   const modalRef = useRef<HTMLDivElement>(null);
   const [openModalState, setOpenModalState] = useState(false);
   const [modalInserData, setModalInserData] = useState<React.ReactNode>(null);
   const [modalTitle, setModalTitle] = useState("");
+  const [modalLink, setModalLink] = useState("");
   useEffect(() => {
     console.log(modalRef.current);
   }, []);
@@ -320,36 +477,40 @@ const WorkList = () => {
     <Block>
       <ul>
         {mocprojects.map((item) => (
-          <li>
-            <div className="label">{item.theme}</div>
-            <div className="inner">
-              <div className="image-area">
-                <div>{item.title}</div>
-              </div>
-              {/* <div className="date">{item.title}</div> */}
-              <div className={`description-area ${item.workDescription}`}>
-                {item.workDescription}
-              </div>
-              <div
-                className="hover-area"
-                onClick={() => {
-                  setModalTitle(item.title);
-                  setModalInserData(
-                    <ModalInner
-                      description={item.description}
-                      skillLabel={item.skillLabel}
-                      date={item.date}
-                      workDescription={item.workDescription}
-                      contribution={item.contribution}
-                      link={""}
-                    ></ModalInner>
-                  );
-                  document.querySelector("body")?.classList.add("popup-open");
-                  setOpenModalState((prev) => !prev);
-                }}
-              >
-                <div className="title">{item.title}</div>
-                <button>자세히 보기</button>
+          <li
+            key={item.title}
+            onClick={() => {
+              setModalTitle(item.title);
+              setModalInserData(
+                <ModalInner
+                  key={item.title}
+                  description={item.description}
+                  skillLabel={item.skillLabel}
+                  date={item.date}
+                  workDescription={item.workDescription}
+                  contribution={item.contribution}
+                  link={item.link}
+                ></ModalInner>
+              );
+              document.querySelector("body")?.classList.add("popup-open");
+              setOpenModalState((prev) => !prev);
+              setModalLink(item.link ? item.link : "");
+            }}
+          >
+            <div>
+              <div className="label">{item.theme}</div>
+              <div className="inner">
+                <div className="image-area">
+                  <div>{item.title}</div>
+                </div>
+                {/* <div className="date">{item.title}</div> */}
+                <div className={`description-area ${item.workDescription}`}>
+                  {item.workDescription}
+                </div>
+                <div className="hover-area">
+                  <div className="title">{item.title}</div>
+                  <button>자세히 보기</button>
+                </div>
               </div>
             </div>
           </li>
@@ -360,6 +521,7 @@ const WorkList = () => {
         modalRef={modalRef}
         openModalState={openModalState}
         closeFunction={modalClose}
+        link={modalLink}
       >
         {modalInserData}
       </LayerPopup>

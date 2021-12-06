@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
+import { size } from "../../style/theme";
 import { HEX2RGBA, Rgba, validRGBA, RGBA2CSSTEXT } from "../lib/hexToRgba";
 
 interface MousePointerProps {
@@ -70,35 +71,46 @@ const MousePointCustom = ({
   const pointerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let x = 0;
-    let y = 0;
-    let mx = 0;
-    let my = 0;
-    let speed = 1;
-    let mouseDown = false;
-    const loop = () => {
-      mx += (x - mx) * speed;
-      //mx = mx + (x - mx) * speed
-      my += (y - my) * speed;
-      pointerRef.current!.style.transform = `translate(${mx}px,${my}px) scale(${
-        mouseDown ? "100%" : "200%"
-      })`;
-      window.requestAnimationFrame(loop);
-    };
-    loop();
-    document.querySelector("html")!.style.cursor = "none";
-    window.addEventListener("mousemove", (e) => {
-      x = e.clientX;
-      y = e.clientY;
-    });
-    window.addEventListener("mousedown", () => {
-      pointerRef.current!.classList.toggle("mouse-down");
-      mouseDown = true;
-    });
-    window.addEventListener("mouseup", () => {
-      pointerRef.current!.classList.toggle("mouse-down");
-      mouseDown = false;
-    });
+    if (window.innerWidth >= Number(size.desktop)) {
+      console.log(window.innerWidth, "포인터 로직 동작");
+      let x = 0;
+      let y = 0;
+      let mx = 0;
+      let my = 0;
+      let speed = 1;
+      let mouseDown = false;
+      const loop = () => {
+        mx += (x - mx) * speed;
+        //mx = mx + (x - mx) * speed
+        my += (y - my) * speed;
+        if (pointerRef.current) {
+          pointerRef.current.style.transform = `translate(${mx}px,${my}px) scale(${
+            mouseDown ? "100%" : "200%"
+          })`;
+        }
+        window.requestAnimationFrame(loop);
+      };
+      loop();
+      const functionMouseMove = (e: MouseEvent) => {
+        x = e.clientX;
+        y = e.clientY;
+      };
+      const functionMouseDown = () => {
+        pointerRef.current!.classList.toggle("mouse-down");
+      };
+      const functionMouseup = () => {
+        pointerRef.current!.classList.toggle("mouse-down");
+        mouseDown = false;
+      };
+      window.addEventListener("mousemove", functionMouseMove);
+      window.addEventListener("mousedown", functionMouseDown);
+      window.addEventListener("mouseup", functionMouseup);
+      return () => {
+        window.removeEventListener("mousemove", functionMouseMove);
+        window.removeEventListener("mousedown", functionMouseDown);
+        window.removeEventListener("mouseup", functionMouseup);
+      };
+    }
   }, []);
 
   return (

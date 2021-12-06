@@ -16,17 +16,17 @@ class Youtube {
       redirect: "follow",
     };
   }
-  mostPopular() {
-    return fetch(
-      `https://www.googleapis.com/youtube/v3//videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=KR&key=${this.key}`,
+  async mostPopular() {
+    const res = await fetch(
+      `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=KR&key=${this.key}`,
       this.getRequestOptions
     )
       .then((res) => res.json())
       .then((res) => res.items);
+    return res;
   }
-  search(query: string) {
-    console.log(this);
-    return fetch(
+  async search(query: string) {
+    const res = fetch(
       `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${query}&type=video&key=${this.key}`,
       this.getRequestOptions
     )
@@ -34,6 +34,7 @@ class Youtube {
       .then((res) =>
         res.items.map((item) => ({ ...item, id: item.id.videoId }))
       );
+    return res;
   }
 }
 
