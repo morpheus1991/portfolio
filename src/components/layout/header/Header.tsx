@@ -6,12 +6,12 @@ import theme from "../../../style/theme";
 import Button from "../../common/Button";
 
 const Block = styled.div`
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  background: #fff;
   @media ${theme.media.desktop} {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 100;
-    background: #fff;
     > .button-block {
       display: none;
     }
@@ -68,32 +68,27 @@ const Block = styled.div`
     .button-block {
       position: relative;
       z-index: 2000;
-      background: ${PRIMARY.grade3};
+      background: #fff;
       display: flex;
-      justify-content: center;
-
+      padding-top: 12px;
+      padding-left: 12px;
       button {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
         display: flex;
         align-items: flex-end;
-        background: ${PRIMARY.grade3};
+        background-size: 18px;
+        background-position: cover;
+        background-image: url(/image/gnb-close.png);
         color: #fff;
         align-items: flex-end;
-        position: absolute;
         top: 0;
-        transform: translateY(-152px);
-        padding-bottom: 20px;
         justify-content: center;
       }
     }
     nav {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      width: 100vw;
+      height: 100vh;
+      background: blue;
       display: flex;
       align-items: center;
       z-index: 100;
