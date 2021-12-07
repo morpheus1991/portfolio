@@ -95,7 +95,7 @@ const Block = styled.div`
       position: fixed;
       width: 100vw;
       height: 100vh;
-      background: blue;
+      /* background: blue; */
       display: flex;
       align-items: center;
       z-index: 100;

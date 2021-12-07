@@ -234,7 +234,7 @@ const CoverSlide = () => {
             </span>
           </span>
         </span>
-        <div className="name">스크립트냥 입니다.</div>
+        <div className="name">조민혁 입니다.</div>
       </div>
       <div className="empty"></div>
     </Block>
