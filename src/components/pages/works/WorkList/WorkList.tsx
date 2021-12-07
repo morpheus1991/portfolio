@@ -292,7 +292,7 @@ const WorkList = () => {
     {
       title: "node백엔드 서버 구현",
       description: "다면적 이해를 위한 학습",
-      workDescription: "플러그인 작업",
+      workDescription: "백엔드 서버 구현 연습",
       projecLabel: ["nodeJs", "backEnd", "express", "mongoose"],
       skillLabel: ["javascript"],
       theme: "study",

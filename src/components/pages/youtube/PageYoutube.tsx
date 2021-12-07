@@ -13,12 +13,16 @@ const Block = styled.div`
     padding-top: 30px;
     display: flex;
     flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
     .contents {
       display: flex;
       margin: 0 auto;
     }
   }
   @media (max-width: 1200px) {
+    position: relative;
+    z-index: 1;
     .contents {
       .aside {
         display: none;
@@ -29,7 +33,8 @@ const Block = styled.div`
     padding-top: 30px;
     display: flex;
     flex-wrap: wrap;
-
+    position: relative;
+    z-index: 1;
     .contents {
       width: 100%;
       display: flex;

@@ -11,8 +11,8 @@ const Block = styled.form`
   padding: 10px;
   width: 100%;
   position: sticky;
-  top: 30px;
-  z-index: 200;
+  top: 42px;
+  z-index: 100;
   .input-block {
     input {
       border: 1px solid ${PRIMARY.grade2};

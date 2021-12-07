@@ -64,20 +64,27 @@ const Block = styled.div`
         visibility: visible;
         z-index: 1;
       }
+      .button-block {
+        button {
+          background-image: url(./image/gnb-close.png);
+        }
+      }
     }
     .button-block {
       position: relative;
       z-index: 2000;
       background: #fff;
       display: flex;
-      padding-top: 12px;
-      padding-left: 12px;
+      padding: 12px;
       button {
         display: flex;
         align-items: flex-end;
+        width: 18px;
+        height: 18px;
         background-size: 18px;
         background-position: cover;
-        background-image: url(/image/gnb-close.png);
+        background-image: url(./image/gnb-open.png);
+        background-repeat: no-repeat;
         color: #fff;
         align-items: flex-end;
         top: 0;
@@ -137,7 +144,11 @@ const Header = () => {
   return (
     <Block className={isGnbOpen ? "isGnbOpen" : ""}>
       <Button type="button" onClick={toggleGnbOpen}>
-        {isGnbOpen ? "닫기" : "열기"}
+        {isGnbOpen ? (
+          <span className="blind">닫기</span>
+        ) : (
+          <span className="blind">열기</span>
+        )}
       </Button>
       <nav
         onClick={() => {

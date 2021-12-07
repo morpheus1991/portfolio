@@ -12,6 +12,7 @@ const Block = styled.div`
 const PageMain = () => {
   return (
     <Block>
+      <div className="">스크롤을 내려주세요.</div>
       <CoverSlide></CoverSlide>
       <Ability></Ability>
       <BeforeAfter></BeforeAfter>
