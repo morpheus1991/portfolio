@@ -28,6 +28,7 @@ const Block = styled.div`
       border-radius: 27px;
       position: absolute;
     }
+
     > ul {
       display: flex;
       flex-wrap: wrap;
@@ -44,7 +45,10 @@ const Block = styled.div`
         justify-content: center;
         margin-bottom: 24px;
         word-break: keep-all;
-
+        > div {
+          display: flex;
+          align-items: center;
+        }
         &:hover {
           .label {
             transform: translateY(100%);
@@ -68,32 +72,29 @@ const Block = styled.div`
           }
         }
 
-        > .inner {
-          padding-top: 40px;
-          .image-area {
-            width: 196px;
-            height: 133px;
-            color: ${PRIMARY.grade2};
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-            word-break: keep-all;
-            line-height: 1.8;
-            letter-spacing: 0.2em;
-            font-size: 1.5em;
-          }
-          .date {
-            margin-top: 20px;
-          }
-          .description-area {
-            margin-top: 20px;
-            font-size: 12px;
-            line-height: 24px;
-            padding: 0 20px;
-            word-break: keep-all;
-          }
+        .title-area {
+          width: 196px;
+          height: 133px;
+          color: ${PRIMARY.grade2};
+          margin: 0 auto;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-weight: bold;
+          word-break: keep-all;
+          line-height: 1.8;
+          letter-spacing: 0.2em;
+          font-size: 1.5em;
+        }
+        .date {
+          margin-top: 20px;
+        }
+        .description-area {
+          margin-top: 20px;
+          font-size: 12px;
+          line-height: 24px;
+          padding: 0 20px;
+          word-break: keep-all;
         }
         .hover-area {
           top: 0;
@@ -500,7 +501,7 @@ const WorkList = () => {
             <div>
               <div className="label">{item.theme}</div>
               <div className="inner">
-                <div className="image-area">
+                <div className="title-area">
                   <div>{item.title}</div>
                 </div>
                 {/* <div className="date">{item.title}</div> */}

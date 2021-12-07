@@ -11,7 +11,7 @@ const VideoList = ({ videos }: Props) => {
   const isVideosEmpty = videos.length === 0;
   console.log(isVideosEmpty);
   return (
-    <div>
+    <div className="video-list">
       {videos.map((item: Item) => (
         <VideoItem key={item.id} item={item}></VideoItem>
       ))}

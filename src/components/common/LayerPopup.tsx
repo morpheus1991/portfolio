@@ -20,6 +20,7 @@ const Block = styled.div`
     transform: scale(90%);
     display: flex;
     align-items: center;
+    z-index: 200;
     &.open {
       visibility: visible;
       opacity: 1;

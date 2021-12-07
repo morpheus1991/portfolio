@@ -52,7 +52,7 @@ const Aside = ({}) => {
     console.log(videos);
   }, []);
   return (
-    <Block>
+    <Block className="aside">
       {videos.map((item: Item) => (
         <VideoItem key={item.id} item={item}></VideoItem>
       ))}
